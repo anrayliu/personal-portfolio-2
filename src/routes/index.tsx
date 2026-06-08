@@ -23,7 +23,6 @@ function Index() {
       <footer className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between text-[11px] font-mono text-muted-foreground">
           <span>© {new Date().getFullYear()} {hero.name}</span>
-          <span>built with coffee &amp; yaml</span>
         </div>
       </footer>
     </main>

@@ -23,30 +23,6 @@ export type Column = {
 
 export const columns: Column[] = [
   {
-    key: "backlog",
-    name: "Backlog",
-    tickets: [
-      {
-        id: "OPS-21",
-        title: "Multi-region failover automation",
-        description: "Cross-region active/active with Route53 health checks.",
-        tags: ["aws", "terraform"],
-      },
-      {
-        id: "OPS-22",
-        title: "Service mesh migration",
-        description: "Evaluate Linkerd vs Istio for internal traffic.",
-        tags: ["k8s", "mesh"],
-      },
-      {
-        id: "OPS-23",
-        title: "Cost anomaly detection",
-        description: "Slack alerts on >15% daily cloud spend deltas.",
-        tags: ["finops"],
-      },
-    ],
-  },
-  {
     key: "in-progress",
     name: "In Progress",
     accent: "blue",
@@ -90,6 +66,30 @@ export const columns: Column[] = [
         description: "Prometheus + Grafana + Loki + Tempo on EKS.",
         tags: ["o11y"],
         href: "https://github.com",
+      },
+    ],
+  },
+  {
+    key: "backlog",
+    name: "Backlog",
+    tickets: [
+      {
+        id: "OPS-21",
+        title: "Multi-region failover automation",
+        description: "Cross-region active/active with Route53 health checks.",
+        tags: ["aws", "terraform"],
+      },
+      {
+        id: "OPS-22",
+        title: "Service mesh migration",
+        description: "Evaluate Linkerd vs Istio for internal traffic.",
+        tags: ["k8s", "mesh"],
+      },
+      {
+        id: "OPS-23",
+        title: "Cost anomaly detection",
+        description: "Slack alerts on >15% daily cloud spend deltas.",
+        tags: ["finops"],
       },
     ],
   },
