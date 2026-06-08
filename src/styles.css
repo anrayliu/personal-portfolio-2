@@ -39,47 +39,47 @@
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --shadow-ticket: 0 1px 2px 0 oklch(0 0 0 / 0.04), 0 1px 3px 0 oklch(0 0 0 / 0.06);
-  --shadow-ticket-hover: 0 4px 12px -2px oklch(0.55 0.18 250 / 0.18), 0 2px 4px 0 oklch(0 0 0 / 0.06);
+  --shadow-ticket-hover: 0 6px 18px -4px oklch(0.55 0.18 250 / 0.25), 0 2px 4px 0 oklch(0 0 0 / 0.06);
 }
 
 :root {
   --radius: 0.5rem;
-  /* Dark grayscale base */
-  --background: oklch(0.12 0.005 250);
-  --foreground: oklch(0.92 0.005 250);
-  --card: oklch(0.15 0.005 250);
-  --card-foreground: oklch(0.92 0.005 250);
-  --popover: oklch(0.15 0.005 250);
-  --popover-foreground: oklch(0.92 0.005 250);
+  /* Light grayscale base (blue-tinted) */
+  --background: oklch(0.99 0.003 250);
+  --foreground: oklch(0.18 0.01 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 250);
 
   /* Blue accent */
-  --primary: oklch(0.6 0.18 250);
-  --primary-foreground: oklch(0.1 0 0);
+  --primary: oklch(0.55 0.18 250);
+  --primary-foreground: oklch(0.99 0 0);
 
-  --secondary: oklch(0.2 0.005 250);
-  --secondary-foreground: oklch(0.9 0.005 250);
-  --muted: oklch(0.2 0.005 250);
-  --muted-foreground: oklch(0.6 0.01 250);
-  --accent: oklch(0.22 0.01 250);
-  --accent-foreground: oklch(0.9 0.005 250);
+  --secondary: oklch(0.96 0.005 250);
+  --secondary-foreground: oklch(0.2 0.01 250);
+  --muted: oklch(0.96 0.005 250);
+  --muted-foreground: oklch(0.5 0.01 250);
+  --accent: oklch(0.94 0.01 250);
+  --accent-foreground: oklch(0.2 0.01 250);
 
   --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.28 0.005 250);
-  --input: oklch(0.28 0.005 250);
-  --ring: oklch(0.6 0.18 250);
+  --border: oklch(0.9 0.005 250);
+  --input: oklch(0.9 0.005 250);
+  --ring: oklch(0.55 0.18 250);
 
   /* Jira board specifics */
-  --column: oklch(0.16 0.004 250);
-  --column-header: oklch(0.58 0.015 250);
-  --ticket: oklch(0.18 0.003 250);
-  --ticket-border: oklch(0.3 0.005 250);
+  --column: oklch(0.96 0.005 250);
+  --column-header: oklch(0.45 0.01 250);
+  --ticket: oklch(1 0 0);
+  --ticket-border: oklch(0.88 0.005 250);
 
-  --tag-blue: oklch(0.25 0.05 250);
-  --tag-blue-foreground: oklch(0.65 0.15 250);
-  --tag-muted: oklch(0.24 0.003 250);
-  --tag-muted-foreground: oklch(0.55 0.01 250);
+  --tag-blue: oklch(0.94 0.04 250);
+  --tag-blue-foreground: oklch(0.45 0.15 250);
+  --tag-muted: oklch(0.94 0.005 250);
+  --tag-muted-foreground: oklch(0.45 0.01 250);
 }
 
 @layer base {
@@ -99,7 +99,7 @@
 
 /* Subtle dotted background for board area */
 @utility board-bg {
-  background-image: radial-gradient(circle, oklch(0.35 0.01 250) 1px, transparent 1px);
+  background-image: radial-gradient(circle, oklch(0.85 0.01 250) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
@@ -117,4 +117,36 @@
 
 @utility column-in {
   animation: column-in 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Sharp clickable ticket animation: snap-shift with a blue edge slice */
+@utility ticket-clickable {
+  position: relative;
+  transition: transform 140ms cubic-bezier(0.2, 0.9, 0.2, 1.2),
+    box-shadow 160ms ease, border-color 160ms ease;
+}
+@utility ticket-clickable {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-left: 2px solid var(--color-primary);
+    border-radius: inherit;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 180ms cubic-bezier(0.7, 0, 0.2, 1);
+    pointer-events: none;
+  }
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 0 var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  &:hover::before {
+    transform: scaleY(1);
+  }
+  &:active {
+    transform: translate(0, 0);
+    box-shadow: 1px 1px 0 0 var(--color-primary);
+  }
 }
