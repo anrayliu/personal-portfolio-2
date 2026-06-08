@@ -26,7 +26,7 @@ function TicketCard({ ticket, accent }: { ticket: Ticket; accent?: boolean }) {
     <Element
       {...linkProps}
       className={
-        "ticket-lift block rounded-md border border-ticket-border bg-ticket p-3 text-left shadow-[var(--shadow-ticket)] " +
+        "block rounded-md border border-ticket-border bg-ticket p-3 text-left shadow-[var(--shadow-ticket)] " +
         (isLink ? "cursor-pointer" : "cursor-default")
       }
     >
@@ -53,39 +53,25 @@ function TicketCard({ ticket, accent }: { ticket: Ticket; accent?: boolean }) {
         </p>
       )}
 
-      <div className="mt-3 flex items-center justify-between gap-2">
-        <div className="flex flex-wrap gap-1">
-          {ticket.tags?.map((t, i) => (
-            <Tag key={t} label={t} accent={accent && i === 0} />
-          ))}
-        </div>
-        <span className="font-mono text-[10px] text-muted-foreground/70">
-          {ticket.id}
-        </span>
+      <div className="mt-3 flex flex-wrap gap-1">
+        {ticket.tags?.map((t, i) => (
+          <Tag key={t} label={t} accent={accent && i === 0} />
+        ))}
       </div>
     </Element>
   );
 }
 
 function ColumnView({ column, index }: { column: Column; index: number }) {
-  const accent = column.accent === "blue";
   return (
     <div
-      className="column-in flex w-72 shrink-0 flex-col rounded-lg bg-column p-3"
+      className="column-in flex w-full flex-col rounded-lg bg-column p-3"
       style={{ animationDelay: `${index * 90}ms` }}
     >
       <div className="mb-3 flex items-center justify-between px-1">
-        <div className="flex items-center gap-2">
-          <span
-            className={
-              "h-1.5 w-1.5 rounded-full " +
-              (accent ? "bg-primary status-pulse" : "bg-muted-foreground/50")
-            }
-          />
-          <h2 className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--column-header)]">
-            {column.name}
-          </h2>
-        </div>
+        <h2 className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--column-header)]">
+          {column.name}
+        </h2>
         <span className="rounded bg-card px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground border border-border">
           {column.tickets.length}
         </span>
@@ -93,7 +79,7 @@ function ColumnView({ column, index }: { column: Column; index: number }) {
 
       <div className="flex flex-col gap-2">
         {column.tickets.map((t) => (
-          <TicketCard key={t.id} ticket={t} accent={accent} />
+          <TicketCard key={t.id} ticket={t} accent={column.accent === "blue"} />
         ))}
       </div>
     </div>
@@ -104,26 +90,13 @@ export function Board() {
   return (
     <section className="board-bg border-t border-border">
       <div className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
-        <div className="mb-6 flex items-end justify-between">
-          <div>
-            <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-              PORTFOLIO / SPRINT 02
-            </p>
-            <h2 className="mt-1 text-2xl font-semibold tracking-tight text-foreground">
-              The board
-            </h2>
-          </div>
-          <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            view only
-          </div>
-        </div>
+        <h2 className="mb-6 text-2xl font-semibold tracking-tight text-foreground">
+          The board
+        </h2>
 
-        <div className="flex gap-4 overflow-x-auto pb-6 -mx-6 px-6 snap-x">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {columns.map((c, i) => (
-            <div key={c.key} className="snap-start">
-              <ColumnView column={c} index={i} />
-            </div>
+            <ColumnView key={c.key} column={c} index={i} />
           ))}
         </div>
       </div>
