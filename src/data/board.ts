@@ -21,6 +21,11 @@ export type Column = {
   tickets: Ticket[];
 };
 
+// Column order on the board:
+//   Column 1 (stacked): In Progress (top) → Backlog (below)
+//   Column 2: Finished
+//   Column 3: Skills
+//   Column 4: Interests
 export const columns: Column[] = [
   {
     key: "in-progress",
