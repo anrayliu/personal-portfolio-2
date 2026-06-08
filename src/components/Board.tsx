@@ -27,7 +27,7 @@ function TicketCard({ ticket, accent }: { ticket: Ticket; accent?: boolean }) {
       {...linkProps}
       className={
         "block rounded-md border border-ticket-border bg-ticket p-3 text-left shadow-[var(--shadow-ticket)] " +
-        (isLink ? "cursor-pointer" : "cursor-default")
+        (isLink ? "ticket-clickable cursor-pointer" : "cursor-default")
       }
     >
       <div className="flex items-start justify-between gap-2">
@@ -53,11 +53,13 @@ function TicketCard({ ticket, accent }: { ticket: Ticket; accent?: boolean }) {
         </p>
       )}
 
-      <div className="mt-3 flex flex-wrap gap-1">
-        {ticket.tags?.map((t, i) => (
-          <Tag key={t} label={t} accent={accent && i === 0} />
-        ))}
-      </div>
+      {ticket.tags && ticket.tags.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-1">
+          {ticket.tags.map((t, i) => (
+            <Tag key={t} label={t} accent={accent && i === 0} />
+          ))}
+        </div>
+      )}
     </Element>
   );
 }
@@ -65,7 +67,7 @@ function TicketCard({ ticket, accent }: { ticket: Ticket; accent?: boolean }) {
 function ColumnView({ column, index }: { column: Column; index: number }) {
   return (
     <div
-      className="column-in flex w-full flex-col rounded-lg bg-column p-3"
+      className="column-in flex w-full flex-col self-start rounded-lg bg-column p-3"
       style={{ animationDelay: `${index * 90}ms` }}
     >
       <div className="mb-3 flex items-center justify-between px-1">
@@ -87,6 +89,13 @@ function ColumnView({ column, index }: { column: Column; index: number }) {
 }
 
 export function Board() {
+  const byKey = Object.fromEntries(columns.map((c) => [c.key, c]));
+  const inProgress = byKey["in-progress"];
+  const backlog = byKey["backlog"];
+  const finished = byKey["finished"];
+  const skills = byKey["skills"];
+  const interests = byKey["interests"];
+
   return (
     <section className="board-bg border-t border-border">
       <div className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
@@ -94,10 +103,15 @@ export function Board() {
           The board
         </h2>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {columns.map((c, i) => (
-            <ColumnView key={c.key} column={c} index={i} />
-          ))}
+        <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Column 1: In Progress stacked above Backlog */}
+          <div className="flex flex-col gap-4">
+            {inProgress && <ColumnView column={inProgress} index={0} />}
+            {backlog && <ColumnView column={backlog} index={1} />}
+          </div>
+          {finished && <ColumnView column={finished} index={2} />}
+          {skills && <ColumnView column={skills} index={3} />}
+          {interests && <ColumnView column={interests} index={4} />}
         </div>
       </div>
     </section>
