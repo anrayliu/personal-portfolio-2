@@ -1,29 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/Hero";
+import { Board } from "@/components/Board";
+import { hero } from "@/data/board";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: `${hero.name} — ${hero.role}` },
+      { name: "description", content: hero.description },
+      { property: "og:title", content: `${hero.name} — ${hero.role}` },
+      { property: "og:description", content: hero.description },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="min-h-screen bg-background">
+      <Hero />
+      <Board />
+      <footer className="border-t border-border">
+        <div className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between text-[11px] font-mono text-muted-foreground">
+          <span>© {new Date().getFullYear()} {hero.name}</span>
+          <span>built with coffee &amp; yaml</span>
+        </div>
+      </footer>
+    </main>
   );
 }
