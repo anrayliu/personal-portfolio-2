@@ -67,13 +67,19 @@ function TicketCard({ ticket, accent }: { ticket: Ticket; accent?: boolean }) {
 function ColumnView({ column, index }: { column: Column; index: number }) {
   return (
     <div
-      className="column-in flex w-full flex-col self-start rounded-lg bg-column p-3"
+      className="column-in relative flex w-full flex-col self-start overflow-hidden rounded-lg bg-column p-3"
       style={{ animationDelay: `${index * 90}ms` }}
     >
-      <div className="mb-3 flex items-center justify-between px-1">
-        <h2 className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--column-header)]">
-          {column.name}
-        </h2>
+      {/* Thin blue accent bar along the top of each column */}
+      <div aria-hidden className="absolute inset-x-0 top-0 h-[2px] bg-primary/70" />
+
+      <div className="mb-3 flex items-center justify-between px-1 pt-1">
+        <div className="flex items-center gap-2">
+          <span className="h-3 w-[2px] bg-primary" />
+          <h2 className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--column-header)]">
+            {column.name}
+          </h2>
+        </div>
         <span className="rounded bg-card px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground border border-border">
           {column.tickets.length}
         </span>
