@@ -99,7 +99,7 @@
 
 /* Subtle dotted background for board area */
 @utility board-bg {
-  background-image: radial-gradient(circle, oklch(0.85 0.01 250) 1px, transparent 1px);
+  background-image: radial-gradient(circle, oklch(0.75 0.01 250) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
