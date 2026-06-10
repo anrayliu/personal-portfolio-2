@@ -4,7 +4,7 @@ function Tag({ label, accent }: { label: string; accent?: boolean }) {
   return (
     <span
       className={
-        "inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wide " +
+        "inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wide " +
         (accent
           ? "bg-tag-blue text-tag-blue-foreground"
           : "bg-tag-muted text-tag-muted-foreground")
@@ -26,7 +26,7 @@ function TicketCard({ ticket, accent }: { ticket: Ticket; accent?: boolean }) {
     <Element
       {...linkProps}
       className={
-        "block rounded-md border border-ticket-border bg-ticket p-3 text-left shadow-[var(--shadow-ticket)] " +
+        "block border border-ticket-border bg-ticket p-3 text-left shadow-[var(--shadow-ticket)] " +
         (isLink ? "ticket-clickable cursor-pointer" : "cursor-default")
       }
     >
@@ -67,7 +67,7 @@ function TicketCard({ ticket, accent }: { ticket: Ticket; accent?: boolean }) {
 function ColumnView({ column, index }: { column: Column; index: number }) {
   return (
     <div
-      className="column-in relative flex w-full flex-col self-start overflow-hidden rounded-lg bg-column p-3"
+      className="column-in relative flex w-full flex-col self-start overflow-hidden bg-column p-3"
       style={{ animationDelay: `${index * 90}ms` }}
     >
       <div className="mb-3 flex items-center justify-between px-1 pt-1">
@@ -76,7 +76,7 @@ function ColumnView({ column, index }: { column: Column; index: number }) {
             {column.name}
           </h2>
         </div>
-        <span className="rounded bg-card px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground border border-border">
+        <span className="bg-card px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground border border-border">
           {column.tickets.length}
         </span>
       </div>

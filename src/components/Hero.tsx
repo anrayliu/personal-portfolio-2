@@ -26,7 +26,7 @@ export function Hero() {
             href={s.href}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:text-primary"
+            className="inline-flex items-center border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:text-primary"
           >
             {s.label}
           </a>
