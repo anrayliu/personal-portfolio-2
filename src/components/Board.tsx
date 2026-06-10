@@ -103,11 +103,14 @@ export function Board() {
   const interests = byKey["interests"];
 
   return (
-    <section className="board-bg border-t border-border">
+    <section className="board-bg relative border-t border-border">
       <div className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
-        <h2 className="mb-6 text-2xl font-semibold tracking-tight text-foreground">
-          The board
-        </h2>
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+            The board
+          </h2>
+          <div aria-hidden className="stripes-blue h-6 w-24 sm:w-40" />
+        </div>
 
         <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {/* Column 1: In Progress stacked above Backlog */}
