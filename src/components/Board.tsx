@@ -70,12 +70,8 @@ function ColumnView({ column, index }: { column: Column; index: number }) {
       className="column-in relative flex w-full flex-col self-start overflow-hidden rounded-lg bg-column p-3"
       style={{ animationDelay: `${index * 90}ms` }}
     >
-      {/* Thin blue accent bar along the top of each column */}
-      <div aria-hidden className="absolute inset-x-0 top-0 h-[2px] bg-primary/70" />
-
       <div className="mb-3 flex items-center justify-between px-1 pt-1">
         <div className="flex items-center gap-2">
-          <span className="h-3 w-[2px] bg-primary" />
           <h2 className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--column-header)]">
             {column.name}
           </h2>
@@ -109,7 +105,6 @@ export function Board() {
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">
             The board
           </h2>
-          <div aria-hidden className="stripes-blue h-6 w-24 sm:w-40" />
         </div>
 
         <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-4">
