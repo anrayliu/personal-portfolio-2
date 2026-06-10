@@ -119,32 +119,76 @@
   animation: column-in 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-/* Sharp clickable ticket animation: snap-shift with a blue edge slice */
+/* Subtle clickable ticket: a thin blue streak sweeps along the left edge */
 @utility ticket-clickable {
   position: relative;
-  transition: transform 140ms cubic-bezier(0.2, 0.9, 0.2, 1.2),
-    box-shadow 160ms ease, border-color 160ms ease;
+  overflow: hidden;
+  transition: border-color 200ms ease;
   &::before {
     content: "";
     position: absolute;
-    inset: 0;
-    border-left: 2px solid var(--color-primary);
-    border-radius: inherit;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-primary);
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform 180ms cubic-bezier(0.7, 0, 0.2, 1);
-    pointer-events: none;
+    transition: transform 320ms cubic-bezier(0.7, 0, 0.2, 1);
   }
   &:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 0 var(--color-primary);
-    border-color: var(--color-primary);
+    border-color: color-mix(in oklab, var(--color-primary) 40%, var(--ticket-border));
   }
   &:hover::before {
     transform: scaleY(1);
   }
-  &:active {
-    transform: translate(0, 0);
-    box-shadow: 1px 1px 0 0 var(--color-primary);
+}
+
+/* Diagonal blue stripe pattern for accent strips */
+@utility stripes-blue {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-primary) 0,
+    var(--color-primary) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  opacity: 0.5;
+}
+
+/* Thin horizontal blue rule with a soft fade on both sides */
+@utility rule-blue {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklab, var(--color-primary) 50%, transparent) 20%,
+    color-mix(in oklab, var(--color-primary) 50%, transparent) 80%,
+    transparent 100%
+  );
+}
+
+/* Small blue corner brackets used as decorative accents */
+@utility bracket-blue {
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: var(--color-primary);
+  }
+  &::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1.5px solid;
+    border-left: 1.5px solid;
+  }
+  &::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1.5px solid;
+    border-right: 1.5px solid;
   }
 }
