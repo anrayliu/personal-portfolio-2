@@ -2,9 +2,18 @@ import { hero, socials } from "@/data/board";
 
 export function Hero() {
   return (
-    <section className="mx-auto max-w-5xl px-6 pt-20 pb-14 sm:pt-28 sm:pb-20">
-      <div className="mb-6 text-xs font-mono uppercase tracking-wider text-muted-foreground">
-        {hero.role.toUpperCase()}
+    <section className="relative mx-auto max-w-5xl px-6 pt-20 pb-14 sm:pt-28 sm:pb-20">
+      {/* Decorative blue stripes — top right */}
+      <div
+        aria-hidden
+        className="stripes-blue pointer-events-none absolute right-6 top-10 h-16 w-24 sm:h-20 sm:w-32"
+      />
+
+      <div className="mb-6 flex items-center gap-3">
+        <span className="h-px w-8 bg-primary" />
+        <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+          {hero.role.toUpperCase()}
+        </span>
       </div>
 
       <h1 className="text-5xl sm:text-7xl font-semibold tracking-tight text-foreground">
@@ -28,6 +37,9 @@ export function Hero() {
           </a>
         ))}
       </div>
+
+      {/* Faded blue rule separating hero from board */}
+      <div aria-hidden className="rule-blue mt-16" />
     </section>
   );
 }

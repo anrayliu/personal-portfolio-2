@@ -20,9 +20,11 @@ function Index() {
     <main className="min-h-screen bg-background">
       <Hero />
       <Board />
-      <footer className="border-t border-border">
+      <footer className="relative border-t border-border">
+        <div aria-hidden className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
         <div className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between text-[11px] font-mono text-muted-foreground">
           <span>© {new Date().getFullYear()} {hero.name}</span>
+          <div aria-hidden className="stripes-blue h-4 w-16" />
         </div>
       </footer>
     </main>
