@@ -119,13 +119,37 @@
   animation: column-in 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-/* Clickable ticket — thicker blue outline on hover (animation only) */
+/* Clickable ticket — animated blue corner brackets (top-left + bottom-right) */
 @utility ticket-clickable {
-  transition: outline-color 200ms ease;
-  outline: 2.5px solid transparent;
-  outline-offset: -2.5px;
-  &:hover {
-    outline-color: var(--color-primary);
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-color: var(--color-primary);
+    border-style: solid;
+    border-width: 0;
+    transition: width 220ms ease, height 220ms ease;
+    pointer-events: none;
+  }
+  &::before {
+    top: -1px;
+    left: -1px;
+    border-top-width: 2.5px;
+    border-left-width: 2.5px;
+  }
+  &::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom-width: 2.5px;
+    border-right-width: 2.5px;
+  }
+  &:hover::before,
+  &:hover::after {
+    width: 18px;
+    height: 18px;
   }
 }
 
