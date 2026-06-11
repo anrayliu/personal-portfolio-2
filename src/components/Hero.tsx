@@ -4,8 +4,7 @@ export function Hero() {
   return (
     <section className="relative mx-auto max-w-5xl px-6 pt-20 pb-14 sm:pt-28 sm:pb-20">
 
-      <div className="mb-6 flex items-center gap-3">
-        <span className="h-px w-8 bg-primary" />
+      <div className="mb-6">
         <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
           {hero.role.toUpperCase()}
         </span>
