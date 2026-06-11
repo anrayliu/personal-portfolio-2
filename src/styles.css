@@ -44,42 +44,42 @@
 
 :root {
   --radius: 0rem;
-  /* Professional gray with stronger contrast */
-  --background: oklch(0.90 0.004 250);
-  --foreground: oklch(0.16 0.01 250);
-  --card: oklch(0.98 0 0);
-  --card-foreground: oklch(0.16 0.01 250);
-  --popover: oklch(0.98 0 0);
-  --popover-foreground: oklch(0.16 0.01 250);
+  /* Professional light-gray base */
+  --background: oklch(0.94 0.003 250);
+  --foreground: oklch(0.18 0.01 250);
+  --card: oklch(0.96 0 0);
+  --card-foreground: oklch(0.18 0.01 250);
+  --popover: oklch(0.96 0 0);
+  --popover-foreground: oklch(0.18 0.01 250);
 
   /* Blue accent */
-  --primary: oklch(0.52 0.2 250);
+  --primary: oklch(0.55 0.18 250);
   --primary-foreground: oklch(0.99 0 0);
 
-  --secondary: oklch(0.86 0.006 250);
-  --secondary-foreground: oklch(0.18 0.01 250);
-  --muted: oklch(0.86 0.006 250);
-  --muted-foreground: oklch(0.42 0.012 250);
-  --accent: oklch(0.82 0.012 250);
-  --accent-foreground: oklch(0.18 0.01 250);
+  --secondary: oklch(0.90 0.005 250);
+  --secondary-foreground: oklch(0.2 0.01 250);
+  --muted: oklch(0.90 0.005 250);
+  --muted-foreground: oklch(0.5 0.01 250);
+  --accent: oklch(0.88 0.01 250);
+  --accent-foreground: oklch(0.2 0.01 250);
 
   --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.68 0.008 250);
-  --input: oklch(0.68 0.008 250);
-  --ring: oklch(0.52 0.2 250);
+  --border: oklch(0.78 0.005 250);
+  --input: oklch(0.78 0.005 250);
+  --ring: oklch(0.55 0.18 250);
 
   /* Jira board specifics */
-  --column: oklch(0.84 0.008 250);
-  --column-header: oklch(0.30 0.012 250);
-  --ticket: oklch(0.99 0 0);
-  --ticket-border: oklch(0.62 0.008 250);
+  --column: oklch(0.90 0.005 250);
+  --column-header: oklch(0.38 0.01 250);
+  --ticket: oklch(0.96 0 0);
+  --ticket-border: oklch(0.75 0.005 250);
 
-  --tag-blue: oklch(0.82 0.06 250);
-  --tag-blue-foreground: oklch(0.38 0.18 250);
-  --tag-muted: oklch(0.82 0.008 250);
-  --tag-muted-foreground: oklch(0.36 0.012 250);
+  --tag-blue: oklch(0.88 0.04 250);
+  --tag-blue-foreground: oklch(0.45 0.15 250);
+  --tag-muted: oklch(0.88 0.005 250);
+  --tag-muted-foreground: oklch(0.45 0.01 250);
 }
 
 @layer base {
