@@ -126,12 +126,12 @@
   &::after {
     content: "";
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 0;
+    height: 0;
     border-color: var(--color-primary);
     border-style: solid;
     border-width: 0;
-    transition: width 220ms ease, height 220ms ease;
+    transition: width 280ms ease, height 280ms ease;
     pointer-events: none;
   }
   &::before {
@@ -148,8 +148,8 @@
   }
   &:hover::before,
   &:hover::after {
-    width: 18px;
-    height: 18px;
+    width: 64px;
+    height: 64px;
   }
 }
 
