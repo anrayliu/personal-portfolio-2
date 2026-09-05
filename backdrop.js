@@ -2,26 +2,10 @@
     var stage = document.getElementById('squares');
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var squares = [];
-    var baseY = window.scrollY || 0;
     var seed = 122215142231115;
     function rand() {
         seed = (seed * 1664525 + 1013904223) >>> 0;
         return seed / 4294967296;
-    }
-
-    function updateParallax() {
-        var y = (window.scrollY || 0) - baseY;
-        for (var i = 0; i < squares.length; i++) {
-            squares[i].el.style.setProperty('--par', (-y * squares[i].depth).toFixed(1) + 'px');
-        }
-        ticking = false;
-    }
-
-    var ticking = false;
-    function onScroll() {
-        if (reduceMotion || ticking) return;
-        ticking = true;
-        requestAnimationFrame(updateParallax);
     }
 
     function buildSquares() {
@@ -53,15 +37,9 @@
             stage.appendChild(el);
             squares.push({ el: el, depth: 0.04 + depth * 0.22 });
         }
-        updateParallax();
     }
 
     buildSquares();
-    window.addEventListener('load', function () {
-        baseY = window.scrollY || 0;
-        updateParallax();
-    });
-    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', function () {
         if (!reduceMotion) buildSquares();
     });
