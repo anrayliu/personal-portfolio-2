@@ -28,12 +28,10 @@ body::before {
     z-index: 1;
     opacity: .22;
     background-image:
-        repeating-linear-gradient(
-            0deg,
+        repeating-linear-gradient(0deg,
             transparent,
             transparent 2px,
-            rgba(0,0,0,.018) 3px
-        );
+            rgba(0, 0, 0, .018) 3px);
 }
 
 /* Fixed embossed-squares backdrop (parallaxed via JS) */
@@ -49,7 +47,7 @@ body::before {
     position: absolute;
     will-change: transform;
     transform: translate3d(0, var(--par, 0px), 0) rotate(var(--rot, 0deg));
-    border: 1px solid rgba(255,255,255,.38);
+    border: 1px solid rgba(255, 255, 255, .38);
 }
 
 .hero {
@@ -73,20 +71,18 @@ body::before {
     overflow: hidden;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.16),
+        linear-gradient(135deg,
+            rgba(255, 255, 255, .16),
             transparent 34%,
-            rgba(0,0,0,.025) 35%,
-            transparent 68%
-        ),
+            rgba(0, 0, 0, .025) 35%,
+            transparent 68%),
         var(--paper);
 
     box-shadow:
-        0 40px 90px rgba(40,38,32,.28),
-        0 10px 28px rgba(40,38,32,.16),
-        inset 1px 1px 1px rgba(255,255,255,.42),
-        inset -1px -1px 1px rgba(0,0,0,.08);
+        0 40px 90px rgba(40, 38, 32, .28),
+        0 10px 28px rgba(40, 38, 32, .16),
+        inset 1px 1px 1px rgba(255, 255, 255, .42),
+        inset -1px -1px 1px rgba(0, 0, 0, .08);
 }
 
 .card::before {
@@ -96,26 +92,22 @@ body::before {
     pointer-events: none;
     opacity: .42;
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             transparent 0 24%,
-            rgba(255,255,255,.18) 24.1% 24.35%,
+            rgba(255, 255, 255, .18) 24.1% 24.35%,
             transparent 24.45% 49%,
-            rgba(0,0,0,.035) 49.1% 49.35%,
+            rgba(0, 0, 0, .035) 49.1% 49.35%,
             transparent 49.45% 74%,
-            rgba(255,255,255,.14) 74.1% 74.35%,
-            transparent 74.45%
-        ),
-        linear-gradient(
-            45deg,
+            rgba(255, 255, 255, .14) 74.1% 74.35%,
+            transparent 74.45%),
+        linear-gradient(45deg,
             transparent 0 24%,
-            rgba(0,0,0,.025) 24.1% 24.35%,
+            rgba(0, 0, 0, .025) 24.1% 24.35%,
             transparent 24.45% 49%,
-            rgba(255,255,255,.13) 49.1% 49.35%,
+            rgba(255, 255, 255, .13) 49.1% 49.35%,
             transparent 49.45% 74%,
-            rgba(0,0,0,.025) 74.1% 74.35%,
-            transparent 74.45%
-        );
+            rgba(0, 0, 0, .025) 74.1% 74.35%,
+            transparent 74.45%);
     background-size: 180px 180px;
     mix-blend-mode: multiply;
 }
@@ -127,18 +119,14 @@ body::before {
     pointer-events: none;
     opacity: .28;
     background:
-        repeating-linear-gradient(
-            135deg,
+        repeating-linear-gradient(135deg,
             transparent 0 88px,
-            rgba(255,255,255,.22) 89px,
-            transparent 91px 178px
-        ),
-        repeating-linear-gradient(
-            45deg,
+            rgba(255, 255, 255, .22) 89px,
+            transparent 91px 178px),
+        repeating-linear-gradient(45deg,
             transparent 0 88px,
-            rgba(0,0,0,.035) 89px,
-            transparent 91px 178px
-        );
+            rgba(0, 0, 0, .035) 89px,
+            transparent 91px 178px);
 }
 
 .identity,
@@ -163,8 +151,8 @@ h1 {
 
     color: var(--ink);
     text-shadow:
-        1px 1px 0 rgba(255,255,255,.65),
-        -1px -1px 0 rgba(0,0,0,.12);
+        1px 1px 0 rgba(255, 255, 255, .65),
+        -1px -1px 0 rgba(0, 0, 0, .12);
 }
 
 .details {
