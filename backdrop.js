@@ -40,7 +40,11 @@
     }
 
     buildSquares();
+    var lastW = window.innerWidth;
     window.addEventListener('resize', function () {
-        if (!reduceMotion) buildSquares();
+        if (!reduceMotion && window.innerWidth !== lastW) {
+            lastW = window.innerWidth;
+            buildSquares();
+        }
     });
 })();
