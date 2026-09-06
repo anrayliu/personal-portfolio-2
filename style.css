@@ -226,14 +226,12 @@ h1 {
 }
 
 .bio-inner {
-    margin-top: 50px;
     width: min(650px, 90vw);
     border-left: 1px solid var(--edge);
     padding-left: 28px;
 }
 
 .bio-label {
-    margin-top: 50px;
     margin-bottom: 24px;
     font-size: 10px;
     letter-spacing: .2em;
